@@ -1,0 +1,30 @@
+import { createElement, useRef } from "react";
+import "./style.css";
+function App(){
+
+
+  const conteudoRef = useRef(null);
+  const h1Ref = useRef(null);
+  const corRef = useRef(null);
+
+  function mostrar(){
+    h1Ref.current.innerText = conteudoRef.current.value;
+  }
+
+  function foco(){
+    conteudoRef.current.focus();
+  }
+
+  function mudaCor(evento){
+    corRef.current.style.backgroundColor = evento.target.value;
+  }
+  return <div id="app" ref={corRef}>
+    <h1 ref={h1Ref}>teste</h1>
+    <input id="conteudo" type="text" ref={conteudoRef}/>
+    <button onClick={mostrar}>Mostrar</button>
+    <button onClick={foco}>Focar</button>
+    <input type="color" onChange={mudaCor}/>
+  </div>;
+}
+
+export default App;
